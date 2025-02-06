@@ -1,0 +1,91 @@
+
+.homepage {
+    text-align: center; 
+  }
+
+.homepage h2{
+  font-family : "TWK Everett";
+  font-size:65px;
+}
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .navbar-logo {
+    height: 60px; /* Adjust the height as needed */
+    margin-left: 20px; /* Remove margin */
+    padding: 3; /* Remove padding */
+    object-fit: contain; /* Ensure the image fits within its container */
+    background-color: transparent;
+  }
+
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar li {
+    float: left;
+  }
+  
+  .navbar .link {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .navbar .link:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .footer {
+    background-color: #94d6a8;
+  width: 100%;
+  color: black; /* Ensures the text color is black */
+  padding: 0.5px; /* Optional: Adds padding for better aesthetics */
+  box-sizing: border-box;
+  }
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+}
+
+.marquee-container {
+  background-color: #94d6a8; 
+  padding: 5px; /* Padding for the container */
+  width: 100%; /* Ensure the container covers the full width */
+  box-sizing: border-box; /* Include padding in the width */
+  overflow: hidden; /* Hide overflow */
+}
+
+.marquee p {
+    display: inline-block;
+    text-indent: 0;
+}
+
+.marquee-two {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  animation: marquee 10s linear infinite;
+  filter: grayscale(100%);
+}
+
+.marquee-two img {
+  width: 10%; /* Adjust width as needed */
+  height: auto;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+

@@ -1,0 +1,81 @@
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .auth-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .auth-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .auth-card form {
+    display: flex;
+    flex-direction: column;
+    border: px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .auth-card form div {
+    margin-bottom: 15px;
+  }
+  
+  .auth-card form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .auth-card form input {
+    width: 90%;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  .auth-card form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .auth-card form button:hover {
+    background-color: rgb(24, 159, 24);
+  }
+  
+  .auth-card .link {
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .auth-card .link:hover {
+    text-decoration: underline;
+  }
+  

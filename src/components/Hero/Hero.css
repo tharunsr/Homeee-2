@@ -1,0 +1,49 @@
+.hero {
+    display: flex;
+    font-weight:500;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.hero h3{
+    font-size : 65px;
+    font-family: "TWK Everett";
+    padding: 0;
+    margin-bottom : 15px;
+}
+
+.hero-text {
+    flex: 1.5;
+    padding: 25px;
+    margin-right: 20px;
+    margin-bottom : 25px;
+}
+
+
+
+.hero-illustration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-illustration img {
+    max-width: 80%;
+    height: auto;
+}
+
+  
+  .brand-word.c1:hover {
+    color: #94d6a8 ;
+  }
+
+  .brand-word {
+    color: white;
+    text-shadow: 
+  2px 2px 1px black, 
+  2px -1px 1px black, 
+  -1px 1px 1px black, 
+  -1px -1px 1px black; 
+  }
