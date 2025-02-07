@@ -1,9 +1,10 @@
 import React from 'react'
+import ProductList from '../Product/ProductList'
 
 const UserDashboard = () => {
   return (
     <div>
-      UserDashboard
+      <ProductList />
     </div>
   )
 }

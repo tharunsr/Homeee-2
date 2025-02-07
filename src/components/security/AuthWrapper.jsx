@@ -11,6 +11,7 @@ const AuthWrapper = ({ allowedRoles }) => {
     }
 
     if (!allowedRoles.includes(role)) {
+        console.log(role);
         return <Navigate to="/unauthorized" />;
     }
 
