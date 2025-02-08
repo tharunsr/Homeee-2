@@ -33,7 +33,7 @@ function App() {
 
       <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="/products" element={<ProductList />} />
-      <Route path="/products/:id" element={<ProductDetail />} />
+      <Route path="/admin-dashboard/products/:id" element={<ProductDetail />} />
 
       </Routes>
     </Router>
