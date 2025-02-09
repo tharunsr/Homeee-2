@@ -1,0 +1,50 @@
+/* Container Styling */
+.unauthorized-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Modern gradient background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+}
+
+/* Title Styling */
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e74c3c; /* Red color for emphasis */
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Message Styling */
+.message {
+    font-size: 1.2rem;
+    color: #34495e; /* Dark gray for readability */
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Button Styling */
+.button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff; /* White text */
+    background-color: #3498db; /* Blue button */
+    border: none;
+    border-radius: 50px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.button:active {
+    transform: translateY(0); /* Reset position when clicked */
+}

@@ -1,0 +1,28 @@
+.admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.admin-navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.admin-navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.admin-navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}

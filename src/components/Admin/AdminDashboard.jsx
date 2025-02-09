@@ -8,11 +8,13 @@ import { getAllCategories } from '../../services/CategoryService';
 import AddProductForm from './AddProductForm'; // Import the AddProductForm component
 import UpdateProductForm from './UpdateProductForm'; // Import the UpdateProductForm component
 import './AdminDashboard.css'; // Import the CSS file
+import { Link } from 'react-router-dom';
+
 
 const AdminDashboard = ({ token }) => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [showAddProductForm, setShowAddProductForm] = useState(false); // State to toggle Add Product Form
+    const [showAddProductModal, setShowAddProductModal] = useState(false); // State for Add Product Modal
     const [selectedProductId, setSelectedProductId] = useState(null); // State to track the product being updated
 
     // Fetch all products and categories on component load
@@ -25,7 +27,6 @@ const AdminDashboard = ({ token }) => {
                 console.error('Failed to fetch products:', error);
             }
         };
-
         const fetchCategories = async () => {
             try {
                 const data = await getAllCategories();
@@ -34,7 +35,6 @@ const AdminDashboard = ({ token }) => {
                 console.error('Failed to fetch categories:', error);
             }
         };
-
         fetchProducts();
         fetchCategories();
     }, []);
@@ -45,6 +45,7 @@ const AdminDashboard = ({ token }) => {
             const updatedProducts = await getAllProducts();
             setProducts(updatedProducts);
             setSelectedProductId(null); // Close the update form after success
+            setShowAddProductModal(false); // Close the add form after success
         } catch (error) {
             console.error('Failed to fetch updated products:', error);
         }
@@ -64,22 +65,44 @@ const AdminDashboard = ({ token }) => {
 
     return (
         <div className="admin-dashboard-container">
+         
+            <nav className="admin-navbar">
+                    <ul>
+                        <li>
+                        <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                        <Link to="/admin-dashboard/categories">Categories</Link>
+                        </li>
+                        {/* Add more links here if needed */}
+                    </ul>
+                </nav>
+           
             <h1 className="admin-dashboard-title">Admin Dashboard</h1>
-
-            {/* Toggle Button for Add Product Form */}
+            {/* Button to Open Add Product Modal */}
             <button
-                onClick={() => setShowAddProductForm(!showAddProductForm)}
+                onClick={() => setShowAddProductModal(true)}
                 style={{ marginBottom: '20px' }}
             >
-                {showAddProductForm ? 'Hide Add Product Form' : 'Show Add Product Form'}
+                Add New Product
             </button>
 
-            {/* Add Product Form */}
-            {showAddProductForm && (
-                <AddProductForm
-                    categories={categories}
-                    onProductAdded={handleProductUpdated}
-                />
+            {/* Add Product Modal */}
+            {showAddProductModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <button
+                            className="close-modal-btn"
+                            onClick={() => setShowAddProductModal(false)}
+                        >
+                            X
+                        </button>
+                        <AddProductForm
+                            categories={categories}
+                            onProductAdded={handleProductUpdated}
+                        />
+                    </div>
+                </div>
             )}
 
             {/* Product List */}
@@ -107,13 +130,23 @@ const AdminDashboard = ({ token }) => {
                 </div>
             </div>
 
-            {/* Update Product Form */}
+            {/* Update Product Modal */}
             {selectedProductId && (
-                <UpdateProductForm
-                    productId={selectedProductId}
-                    categories={categories}
-                    onUpdateSuccess={handleProductUpdated}
-                />
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <button
+                            className="close-modal-btn"
+                            onClick={() => setSelectedProductId(null)}
+                        >
+                            X
+                        </button>
+                        <UpdateProductForm
+                            productId={selectedProductId}
+                            categories={categories}
+                            onUpdateSuccess={handleProductUpdated}
+                        />
+                    </div>
+                </div>
             )}
         </div>
     );

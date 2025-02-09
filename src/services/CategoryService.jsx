@@ -43,7 +43,7 @@ export const addCategory = async (categoryData) => {
 // Update an existing category (Admin Only)
 export const updateCategory = async (id, updatedData) => {
     try {
-        const response = await axiosInstance.put(`${ADMIN_URL}`, updatedData, {
+        const response = await axiosInstance.put(`${ADMIN_URL}/${id}`, updatedData, {
             headers: {
                 'Content-Type': 'application/json',
             },
