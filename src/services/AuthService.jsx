@@ -17,6 +17,10 @@ const response = await axios.post(`${API_URL}/login`, credentials);
 export const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("cart");
+
+    // Optionally, redirect the user to the home page or login page
+    window.location.href = "/"; 
 };
  
 // Get Current User Role

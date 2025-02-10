@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getAllProducts, getProductById } from '../../services/ProductService';
-import './UserDashboard.css'; // Import the CSS file
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import './UserDashboard.css';
+import { logout } from '../../services/AuthService'; // Adjust the path as needed
 const UserDashboard = () => {
     const [products, setProducts] = useState([]);
-    const [selectedProduct, setSelectedProduct] = useState(null); // State to track the selected product for the modal
-    const [showModal, setShowModal] = useState(false); // State to control the visibility of the modal
-    const userId = localStorage.getItem("userId");
-    console.log(userId);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
+
     // Fetch all products on component load
     useEffect(() => {
         const fetchProducts = async () => {
@@ -27,77 +27,65 @@ const UserDashboard = () => {
         try {
             const product = await getProductById(id);
             setSelectedProduct(product);
-            console.log(product);
-            setShowModal(true); // Open the modal
+            setShowModal(true);
         } catch (error) {
             console.error('Failed to fetch product details:', error);
         }
     };
 
-    // Add to cart functionality (example)
+    // Add product to cart and navigate to Cart page
     const addToCart = (product) => {
-        console.log('Adding to cart:', product);
-        // Implement your cart logic here (e.g., update state or call an API)
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingProduct = cartItems.find((item) => item.id === product.id);
+
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cartItems.push({ ...product, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // Redirect to Cart page
+        navigate('/cart');
     };
 
     return (
-        
         <div className="user-dashboard-container">
-            {/* Navbar */}
             <nav className="user-navbar">
                 <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/user-dashboard/categories">Categories</Link></li>
+                    <li><Link to="/cart">Cart</Link></li> {/* Added Cart Link */}
                     <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/user-dashboard/categories">Categories</Link>
-                    </li>
-                    {/* Add more links here if needed */}
+            <button onClick={logout} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                Logout
+            </button>
+        </li>
                 </ul>
             </nav>
-
             <h1 className="user-dashboard-title">Welcome to Beauty Basket</h1>
-            
 
-            {/* Product List (Grid Layout) */}
             <div className="user-dashboard-grid">
                 {products.map((product) => (
-                    <div
-                        key={product.id}
-                        onClick={() => handleProductClick(product.id)}
-                        className="user-dashboard-product-box"
-                    >
+                    <div key={product.id} className="user-dashboard-product-box" onClick={() => handleProductClick(product.id)}>
                         <h3>{product.name}</h3>
                         <p>Price: ${product.price}</p>
                         <p>{product.description}</p>
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation(); // Prevent triggering the parent click event
-                                addToCart(product);
-                            }}
-                        >
-                            Add to Cart
-                        </button>
+                        <button onClick={(e) => { e.stopPropagation(); addToCart(product); }}>Add to Cart</button>
                     </div>
                 ))}
             </div>
 
-            {/* Product Details Modal */}
             {showModal && selectedProduct && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <button
-                            className="close-modal-btn"
-                            onClick={() => setShowModal(false)} // Close the modal
-                        >
-                            X
-                        </button>
+                        <button className="close-modal-btn" onClick={() => setShowModal(false)}>X</button>
                         <h2>Product Details</h2>
                         <p><strong>Name:</strong> {selectedProduct.name}</p>
                         <p><strong>Price:</strong> ${selectedProduct.price}</p>
                         <p><strong>Description:</strong> {selectedProduct.description}</p>
                         <p><strong>Category:</strong> {selectedProduct.categoryName || 'N/A'}</p>
-                        {/* Add more product details here if available */}
                     </div>
                 </div>
             )}

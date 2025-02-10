@@ -22,12 +22,11 @@ const CategoryListComponent = () => {
     return (
         <div className="category-list-component">
             <h2>Available Categories</h2>
-
             {/* Category List */}
-            <div className="category-list">
+            <div className="category-card-container">
                 {categories.length > 0 ? (
                     categories.map((category) => (
-                        <div key={category.id} className="category-item">
+                        <div key={category.id} className="category-card">
                             <span>{category.name}</span>
                         </div>
                     ))

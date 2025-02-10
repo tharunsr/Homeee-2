@@ -80,7 +80,7 @@ const AdminDashboard = ({ token }) => {
            
             <h1 className="admin-dashboard-title">Admin Dashboard</h1>
             {/* Button to Open Add Product Modal */}
-            <button
+            <button className = "cc-add-btn"
                 onClick={() => setShowAddProductModal(true)}
                 style={{ marginBottom: '20px' }}
             >

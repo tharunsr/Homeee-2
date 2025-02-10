@@ -10,6 +10,7 @@ import UserDashboard from './components/User/UserDashboard'
 import Unauthorized from './components/Unauthorization/Unauthorized'
 import CategoryComponent from './components/category/CategoryComponent'
 import CategoryListComponent from './components/category/CategoryListComponent'
+import Cart from './components/Cart/Cart'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
       <Route element={<AuthWrapper allowedRoles={["ROLE_USER"]} />}>
       <Route path="/user-dashboard" element={<UserDashboard />} />
       <Route path="/user-dashboard/categories" element={<CategoryListComponent />} />
+      <Route path='/cart' element={<Cart />}/>
       </Route>
 
       <Route path="/unauthorized" element={<Unauthorized />} />

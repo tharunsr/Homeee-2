@@ -9,7 +9,7 @@ import './CategoryComponent.css'; // Import the CSS file
 
 const CategoryComponent = () => {
     const [categories, setCategories] = useState([]);
-    const [showAddForm, setShowAddForm] = useState(false); // State to toggle Add Category Form
+    const [showAddModal, setShowAddModal] = useState(false); // State to toggle Add Category Modal
     const [selectedCategoryId, setSelectedCategoryId] = useState(null); // State to track the category being updated
     const [newCategoryName, setNewCategoryName] = useState(''); // State for new category name
     const [updatedCategoryName, setUpdatedCategoryName] = useState(''); // State for updated category name
@@ -31,11 +31,11 @@ const CategoryComponent = () => {
     // Add a new category
     const handleAddCategory = async () => {
         try {
-            const response = await addCategory({ name: newCategoryName });
+            await addCategory({ name: newCategoryName });
             alert('Category added successfully');
             fetchCategories(); // Refresh the category list
             setNewCategoryName(''); // Clear the input field
-            setShowAddForm(false); // Close the form
+            setShowAddModal(false); // Close the modal
         } catch (error) {
             console.error('Failed to add category:', error);
         }
@@ -44,7 +44,7 @@ const CategoryComponent = () => {
     // Update an existing category
     const handleUpdateCategory = async () => {
         try {
-            const response = await updateCategory(selectedCategoryId, { name: updatedCategoryName });
+            await updateCategory(selectedCategoryId, { name: updatedCategoryName });
             alert('Category updated successfully');
             fetchCategories(); // Refresh the category list
             setSelectedCategoryId(null); // Close the update form
@@ -66,36 +66,49 @@ const CategoryComponent = () => {
     };
 
     return (
-        <div className="category-component">
+        <div className="cc-dashboard">
             <h2>Category Management</h2>
 
-            {/* Button to Open Add Category Form */}
-            <button onClick={() => setShowAddForm(!showAddForm)}>
-                {showAddForm ? 'Hide Add Category Form' : 'Show Add Category Form'}
+            {/* Button to Open Add Category Modal */}
+            <button className="cc-add-btn" onClick={() => setShowAddModal(true)}>
+                Add New Category
             </button>
 
-            {/* Add Category Form */}
-            {showAddForm && (
-                <div className="form-container">
-                    <input
-                        type="text"
-                        placeholder="Enter category name"
-                        value={newCategoryName}
-                        onChange={(e) => setNewCategoryName(e.target.value)}
-                    />
-                    <button onClick={handleAddCategory}>Add Category</button>
+            {/* Add Category Modal */}
+            {showAddModal && (
+                <div className="cc-modal-overlay" onClick={() => setShowAddModal(false)}>
+                    <div className="cc-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="close-modal-btn" onClick={() => setShowAddModal(false)}>
+                            X
+                        </button>
+                        <h3>Add New Category</h3>
+                        <input
+                            type="text"
+                            placeholder="Enter category name"
+                            value={newCategoryName}
+                            onChange={(e) => setNewCategoryName(e.target.value)}
+                        />
+                        <button className="cc-modal-action-btn" onClick={handleAddCategory}>
+                            Add Category
+                        </button>
+                    </div>
                 </div>
             )}
 
             {/* Category List */}
-            <div className="category-list">
-                <h3>Categories</h3>
+            <div className="cc-card-container">
                 {categories.map((category) => (
-                    <div key={category.id} className="category-item">
-                        <span>{category.name}</span>
-                        <div className="actions">
-                            <button onClick={() => handleDeleteCategory(category.id)}>Delete</button>
+                    <div key={category.id} className="cc-card">
+                        <span className="cc-category-name">{category.name}</span>
+                        <div className="cc-card-actions">
                             <button
+                                className="cc-delete-btn"
+                                onClick={() => handleDeleteCategory(category.id)}
+                            >
+                                Delete
+                            </button>
+                            <button
+                                className="cc-update-btn"
                                 onClick={() => {
                                     setSelectedCategoryId(category.id);
                                     setUpdatedCategoryName(category.name);
@@ -110,14 +123,17 @@ const CategoryComponent = () => {
 
             {/* Update Category Form */}
             {selectedCategoryId && (
-                <div className="form-container">
+                <div className="cc-update-form-container">
+                    <h3>Update Category</h3>
                     <input
                         type="text"
                         placeholder="Enter updated category name"
                         value={updatedCategoryName}
                         onChange={(e) => setUpdatedCategoryName(e.target.value)}
                     />
-                    <button onClick={handleUpdateCategory}>Update Category</button>
+                    <button className="cc-update-action-btn" onClick={handleUpdateCategory}>
+                        Update Category
+                    </button>
                 </div>
             )}
         </div>

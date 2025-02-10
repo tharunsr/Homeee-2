@@ -13,6 +13,40 @@
     margin-bottom: 20px;
 }
 
+/* Navbar Styling */
+.admin-navbar {
+    background-color: #333; /* Dark background */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd; /* Optional: Adds a subtle border */
+}
+
+.admin-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px; /* Space between links */
+}
+
+.admin-navbar ul li {
+    display: inline-block;
+}
+
+.admin-navbar ul li a {
+    color: white; /* White text for links */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.admin-navbar ul li a:hover {
+    color: #00bcd4; /* Cyan color on hover */
+}
+
 .products-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
@@ -77,7 +111,7 @@
     display: block;
     width: 100%;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
@@ -90,6 +124,22 @@
 
 .add-product-form button:hover {
     filter: brightness(0.9);
+}
+
+.cc-add-btn {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cc-add-btn:hover {
+    background-color: #45a049;
 }
 
 /* Modal Overlay */
@@ -123,8 +173,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: red;
-    color: white;
+    color: black;
     border: none;
     border-radius: 50%;
     width: 30px;
@@ -133,5 +182,6 @@
 }
 
 .close-modal-btn:hover {
-    background-color: darkred;
+    background-color: red;
+    color:white
 }

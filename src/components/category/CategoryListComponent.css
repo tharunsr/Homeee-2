@@ -1,16 +1,40 @@
 .category-list-component {
-    max-width: 600px;
-    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-.category-list {
-    margin-top: 20px;
+.category-list-component h2 {
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.category-item {
-    padding: 10px;
+/* Container for category cards */
+.category-card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap to the next line */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center align cards */
+}
+
+/* Individual category card */
+.category-card {
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px; /* Fixed width for cards */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Card shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.category-card:hover {
+    transform: translateY(-5px); /* Slight upward movement on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.category-card span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
 }
