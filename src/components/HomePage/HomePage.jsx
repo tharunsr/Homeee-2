@@ -6,7 +6,10 @@ import Cognizant from '../../assets/Cognizant-Logo.png'
 import Garnier from '../../assets/Garnier-logo.png'
 import Loreal from '../../assets/LOreal-Logo.png'
 import Beardo from '../../assets/Beardo.png'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const HomePage = () => {
   return (
@@ -15,7 +18,7 @@ const HomePage = () => {
         <nav className="navbar">
         <img src={logo} alt="Logo" className="navbar-logo" />
           <ul>
-          <li><Link to="" className="link">Home</Link></li>
+          <li><Link to="/" className="link">Home</Link></li>
           <li><Link to="/about" className="link">About</Link></li>
           <li><Link to="/login" className="link">Login</Link></li>
           <li><Link to="/register" className="link">Register</Link></li>
@@ -39,10 +42,20 @@ const HomePage = () => {
       <img src={Beardo} alt="Image 1" />
       </div>
       </div>
+      
+      <div className="social-media-links">
+      <h2>Please feel free to reach us out!</h2>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-link">
+          <FontAwesomeIcon icon={faInstagram} fade />
+        </a>
+        <a href="mailto:2375276@cognizant.com" target="_blank" rel="noopener noreferrer" className="social-link">
+          <FontAwesomeIcon icon={faEnvelope} fade/>
+        </a>
+      </div>
       </main>
-      <div>sd</div>
+      
       <footer className="footer">
-        <p>Copyright BeautyBasket</p>
+        <p>© 2025 BEAUTY BASKET All Rights Reserved.</p>
       </footer>
     </div>
   );

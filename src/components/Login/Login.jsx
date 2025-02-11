@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { login } from "../../services/AuthService";
 import { useNavigate, Link } from "react-router-dom";
-import "./Login.css"; // Make sure to import your CSS file
+import "../Register/Register.css"; // Make sure to import your CSS file
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });

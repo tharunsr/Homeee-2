@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Register.css"; // Make sure to import your CSS file
 
 const Register = () => {
-  const [user, setUser] = useState({ name: "", email: "", password: "", role: "USER" });
+  const [user, setUser] = useState({ name: "", email: "", password: "", address:"",phone_num:"", role: "USER" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -56,6 +56,21 @@ const Register = () => {
             <option value="USER">User</option>
             <option value="ADMIN">Admin</option>
           </select> */}
+          <input
+            type="tel"
+            name="phone_num"
+            placeholder="Phone Number"
+            pattern="[0-9]{10}"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            onChange={handleChange}
+            required
+          />
           <button type="submit">Register</button>
         </form>
       </div>

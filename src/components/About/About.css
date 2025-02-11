@@ -1,0 +1,58 @@
+  .about h2{
+    font-family : "TWK Everett";
+    font-size:45px;
+  }
+
+  .about p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  .about-image {
+    width: 25%;
+    height: auto;
+    margin-left: 12%;
+  
+  }
+  
+  .about-text {
+    width: 50%;
+    margin-right: 8%;
+  }
+
+  .container-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 30px;
+  }
+
+  .container-2 .about-image {
+    width: 25%;
+    height: auto;
+    order: 2;
+    margin-right: 12%;
+  }
+  
+  .container-2 .about-text {
+    order: 1;
+    width: 50%;
+    margin-left: 8%;
+  }
+
+  .rating {
+    display: flex;
+}
+
+.star {
+    color: gold;
+    font-size: 24px;
+    margin-right: 5px;
+}

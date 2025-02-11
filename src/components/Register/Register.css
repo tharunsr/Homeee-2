@@ -1,12 +1,12 @@
-/* Add this to your CSS file */
+
 .animated-background {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b, #86a8e7, #91eae4); /* Updated colors */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b, #86a8e7, #91eae4); 
     background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    animation: gradientAnimation 5s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust height as needed */
+    height: 100vh; 
   }
   
   @keyframes gradientAnimation {
@@ -74,14 +74,13 @@
   }
   
   .login-container button:hover {
-    background-color: #0056b3; /* Darker blue color */
+    background-color: green;
   }
   
   .login-container a {
     margin-top: 1rem;
-    color: #007bff; /* Blue color */
+    color: #007bff; 
     text-decoration: none;
-    font-size: larger;
   }
   
   .login-container a:hover {

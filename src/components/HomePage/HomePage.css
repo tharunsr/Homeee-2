@@ -37,6 +37,7 @@
     text-align: center;
     padding: 22px 20px;
     text-decoration: none;
+    animation: pulse 2s infinite;
   }
   
   .navbar .link:hover {
@@ -45,11 +46,12 @@
   }
   
   .footer {
-    background-color: #94d6a8;
+    background-color: black;
   width: 100%;
-  color: black; /* Ensures the text color is black */
-  padding: 0.5px; /* Optional: Adds padding for better aesthetics */
+  color: #94d6a8;
+  padding: 0.5px; 
   box-sizing: border-box;
+  text-align: center; 
   }
 
 .marquee {
@@ -88,4 +90,38 @@
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.social-media-links {
+  margin: 20px 0;
+}
+
+.social-link {
+  margin: 10px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.social-link:hover {
+  color: #007bff; /* Adjust hover color as needed */
+}
+
+.social-media-links h2{
+  animation: fadeIn 2s ease-in-out;
+  font-family : "TWK Everett";
+  font-size:35px;
+}
+
+
 
