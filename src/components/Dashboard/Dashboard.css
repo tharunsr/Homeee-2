@@ -1,53 +1,83 @@
 /* AdminDashboard.css */
+.dashboard-container {
 
-.admin-dashboard-container {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9;
+    background: linear-gradient(270deg, #040506, #1c1f26, #040506); /* Gradient Colors */
+    background-size: 600% 600%;
+    animation: backgroundGradientAnimation 5s ease infinite; /* Animation */
     min-height: 100vh;
 }
 
-.admin-dashboard-title {
+@keyframes backgroundGradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.dashboard-title {
     text-align: center;
-    color: #333;
+    color: white;
     margin-bottom: 20px;
 }
 
 /* Navbar Styling */
-.admin-navbar {
-    background-color: #333; /* Dark background */
-    padding: 10px 20px;
+.dashboard-navbar {
+   
+    background-color: #191c24; /* Dark background */
+    padding: 22px 30px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd; /* Optional: Adds a subtle border */
+    justify-content: flex-end;
+    overflow: hidden;
 }
 
-.admin-navbar ul {
+.dashboard-navbar ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 20px; /* Space between links */
+    gap: 25px; /* Space between links */
 }
 
-.admin-navbar ul li {
-    display: inline-block;
+
+.dashboard-logo {
+    filter: brightness(0) invert(1);
+    width: 130px; /* Adjust the width as needed */
+    height: auto; 
+    margin-right: auto; /* Push logo to the left */
 }
 
-.admin-navbar ul li a {
+
+.dashboard-navbar ul li a {
+    display: block;
     color: white; /* White text for links */
     text-decoration: none;
+    margin-top: 10px;
     font-size: 1rem;
     font-weight: bold;
     transition: color 0.3s ease; /* Smooth hover effect */
 }
 
-.admin-navbar ul li a:hover {
-    color: #00bcd4; /* Cyan color on hover */
+.dashboard-navbar button{
+    background-color: #191c24;
+    margin-top: 10px;
+    color:white;
+    border: none; /* Remove the default border */
+    box-shadow: none; /* Remove any default box-shadow */
+    outline: none;
+    font-size : 17px;
+}
+
+.dashboard-navbar ul li a:hover {
+    color: #af1763; /* Cyan color on hover */
 }
 
 .products-container {
+    padding : 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
     gap: 20px; /* Space between product boxes */
@@ -55,8 +85,8 @@
 }
 
 .product-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #191c24;
+    border: 1px solid #272828;
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -67,18 +97,18 @@
 
 .product-card:hover {
     transform: translateY(-5px); /* Slight upward movement on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    box-shadow: 0 4px 8px rgba(151, 151, 151, 0.2); /* Enhanced shadow on hover */
 }
 
 .product-card h3 {
     margin: 0 0 10px;
-    color: #333;
+    color: white;
     font-size: 1.2rem;
 }
 
 .product-card p {
     margin: 0 0 10px;
-    color: #666;
+    color: rgb(218, 217, 217);
     font-size: 1rem;
 }
 
@@ -86,6 +116,7 @@
     padding: 10px 15px;
     background-color: #dc3545; /* Red for delete */
     color: white;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -99,7 +130,7 @@
 
 .product-card button:hover {
     filter: brightness(0.9); /* Darken the button slightly on hover */
-}
+ }
 
 .add-product-form {
     margin-top: 20px;

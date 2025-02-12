@@ -4,20 +4,22 @@ import {
     getAllProducts,
     deleteProduct,
 } from '../../services/ProductService';
+import '../Dashboard/Dashboard.css'
 import { getAllCategories } from '../../services/CategoryService';
 import AddProductForm from './AddProductForm'; // Import the AddProductForm component
 import UpdateProductForm from './UpdateProductForm'; // Import the UpdateProductForm component
-import './AdminDashboard.css'; // Import the CSS file
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import logo from '../../assets/beautybasket.png'
 
 const AdminDashboard = ({ token }) => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [showAddProductModal, setShowAddProductModal] = useState(false); // State for Add Product Modal
     const [selectedProductId, setSelectedProductId] = useState(null); // State to track the product being updated
-
+    const navigate = useNavigate();
     // Fetch all products and categories on component load
     useEffect(() => {
         const fetchProducts = async () => {
@@ -25,7 +27,8 @@ const AdminDashboard = ({ token }) => {
                 const data = await getAllProducts();
                 setProducts(data);
             } catch (error) {
-                console.error('Failed to fetch products:', error);
+                toast.error('Failed to fetch products, Check Backend', error);
+                
             }
         };
         const fetchCategories = async () => {
@@ -33,7 +36,8 @@ const AdminDashboard = ({ token }) => {
                 const data = await getAllCategories();
                 setCategories(data);
             } catch (error) {
-                console.error('Failed to fetch categories:', error);
+                toast.error('Failed to fetch categories, Check Backend', error);
+                navigate('/');
             }
         };
         fetchProducts();
@@ -65,9 +69,10 @@ const AdminDashboard = ({ token }) => {
     };
 
     return (
-        <div className="admin-dashboard-container">
+        <div className="dashboard-container">
          
-            <nav className="admin-navbar">
+            <nav className="dashboard-navbar">
+                <img src={logo} alt="Logo" className="dashboard-logo" />
                     <ul>
                         <li>
                         <Link to="/">Home</Link>
@@ -75,11 +80,17 @@ const AdminDashboard = ({ token }) => {
                         <li>
                         <Link to="/admin-dashboard/categories">Categories</Link>
                         </li>
+                        <li>
+                        <Link to="/">
+                        <FontAwesomeIcon icon={faPowerOff} style={{color: "#ffffff"}} />
+                        </Link>
+                        </li>
                        
                     </ul>
                 </nav>
            
-            <h1 className="admin-dashboard-title">Admin Dashboard</h1>
+            <h1 className="dashboard-title">Admin Dashboard</h1>
+            <h2 className="dashboard-title">Products</h2>
             {/* Button to Open Add Product Modal */}
             <button className = "cc-add-btn"
                 onClick={() => setShowAddProductModal(true)}
@@ -108,7 +119,7 @@ const AdminDashboard = ({ token }) => {
 
             {/* Product List */}
             <div>
-                <h2>Products</h2>
+                
                 <div className="products-container">
                     {products.map((product) => (
                         <div key={product.id} className="product-card">

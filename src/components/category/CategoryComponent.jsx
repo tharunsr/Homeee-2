@@ -68,7 +68,7 @@ const CategoryComponent = () => {
     };
 
     return (
-        <div className="cc-dashboard">
+        <div className="dashboard-container">
             <h2>Category Management</h2>
 
             {/* Button to Open Add Category Modal */}

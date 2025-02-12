@@ -12,6 +12,7 @@ const Login = () => {
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    
   };
 
   const handleSubmit = async (e) => {

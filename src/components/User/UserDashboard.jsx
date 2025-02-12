@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getAllProducts, getProductById } from '../../services/ProductService';
 import { Link, useNavigate } from 'react-router-dom';
-import './UserDashboard.css';
+import '../Dashboard/Dashboard.css'
 import { logout } from '../../services/AuthService'; // Adjust the path as needed
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import logo from '../../assets/beautybasket.png'
+
+
 const UserDashboard = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -17,7 +22,8 @@ const UserDashboard = () => {
                 const data = await getAllProducts();
                 setProducts(data);
             } catch (error) {
-                console.error('Failed to fetch products:', error);
+                toast.error('Failed to fetch products, Check Backend', error);
+                navigate('/');
             }
         };
         fetchProducts();
@@ -53,24 +59,37 @@ const UserDashboard = () => {
     };
 
     return (
-        <div className="user-dashboard-container">
-            <nav className="user-navbar">
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/user-dashboard/categories">Categories</Link></li>
-                    <li><Link to="/cart">Cart</Link></li> {/* Added Cart Link */}
-                    <li>
-            <button onClick={logout} style={{ background: 'none', border: 'none', cursor: 'pointer' }} >
-                Logout
-            </button>
-        </li>
-                </ul>
-            </nav>
-            <h1 className="user-dashboard-title">Welcome to Beauty Basket</h1>
+        
+        <div className='dashboard-container'>
 
-            <div className="user-dashboard-grid">
+         <nav className="dashboard-navbar">
+                        <img src={logo} alt="Logo" className="dashboard-logo" />
+                            <ul>
+                                <li>
+                                <Link to="/">Home</Link>
+                                </li>
+                                <li>
+                                <Link to="/user-dashboard/categories">Categories</Link>
+                                </li>
+                                <li>
+                                    <Link to="/cart">
+                                    <FontAwesomeIcon icon={faCartShopping} style={{color: "#ffffff",}} />
+                                    </Link>
+                                </li>
+                                <li>
+                                <button onClick={logout} style={{cursor : "pointer"}} >
+                                <FontAwesomeIcon icon={faPowerOff} />
+                                </button>
+                                </li>
+                               
+                            </ul>
+                        </nav>
+
+            <h1 className="dashboard-title">Welcome to Beauty Basket</h1>
+
+            <div className="products-container">
                 {products.map((product) => (
-                    <div key={product.id} className="user-dashboard-product-box" onClick={() => handleProductClick(product.id)}>
+                    <div key={product.id} className="product-card" onClick={() => handleProductClick(product.id)}>
                         <h3>{product.name}</h3>
                         <p>Price: ₹{product.price}</p>
                         <p>{product.description}</p>
