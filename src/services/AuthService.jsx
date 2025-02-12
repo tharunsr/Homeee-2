@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
  
 const API_URL = "http://localhost:8080/api/auth";
  
@@ -15,6 +16,7 @@ const response = await axios.post(`${API_URL}/login`, credentials);
  
 // Logout User
 export const logout = () => {
+
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     localStorage.removeItem("cart");

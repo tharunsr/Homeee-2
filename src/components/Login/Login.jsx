@@ -3,8 +3,9 @@ import { useState } from "react";
 import { login } from "../../services/AuthService";
 import { useNavigate, Link } from "react-router-dom";
 import "../Register/Register.css"; // Make sure to import your CSS file
-
+import { toast } from "react-toastify";
 const Login = () => {
+
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Login = () => {
     try {
       const response = await login(credentials);
       console.log("Login Response:", response); // Debugging
-
+      toast.success("Login Successful")
       if (response.token) {
         const tokenParts = JSON.parse(atob(response.token.split(".")[1]));
         localStorage.setItem("token", response.token);
@@ -35,6 +36,7 @@ const Login = () => {
       }
     } catch (err) {
       console.error("Login failed:", err);
+      toast.error("Login Failed");
       setError("Invalid email or password.");
     }
   };

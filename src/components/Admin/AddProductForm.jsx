@@ -1,6 +1,7 @@
 // AddProductForm.js
 import React, { useState } from 'react';
 import { addProduct } from '../../services/ProductService';
+import { toast } from 'react-toastify';
 
 const AddProductForm = ({ categories, onProductAdded }) => {
     const [formData, setFormData] = useState({
@@ -21,11 +22,11 @@ const AddProductForm = ({ categories, onProductAdded }) => {
         e.preventDefault();
         try {
             await addProduct(formData);
-            alert('Product added successfully');
+            toast.success('Product added successfully');
             onProductAdded(); // Notify the parent component to refresh the product list
             setFormData({ name: '', price: '', description: '', categoryId: '' }); // Reset form
         } catch (error) {
-            console.error('Failed to add product:', error);
+            toast.error('Failed to add product:', error);
         }
     };
 

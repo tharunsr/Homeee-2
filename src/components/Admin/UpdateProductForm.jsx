@@ -1,6 +1,8 @@
 // UpdateProductForm.js
 import React, { useState, useEffect } from 'react';
 import { getProductById, updateProduct } from '../../services/ProductService';
+import { toast } from 'react-toastify';
+
 
 const UpdateProductForm = ({ productId, categories, onUpdateSuccess }) => {
     const [formData, setFormData] = useState({
@@ -20,6 +22,7 @@ const UpdateProductForm = ({ productId, categories, onUpdateSuccess }) => {
                     price: product.price,
                     description: product.description,
                     categoryId: product.categoryId || '',
+                 
                 });
             } catch (error) {
                 console.error('Failed to fetch product details:', error);
@@ -39,10 +42,10 @@ const UpdateProductForm = ({ productId, categories, onUpdateSuccess }) => {
         e.preventDefault();
         try {
             await updateProduct(productId, formData);
-            alert('Product updated successfully');
+            toast.success('Product updated successfully');
             onUpdateSuccess(); // Notify the parent component to refresh the product list
         } catch (error) {
-            console.error('Failed to update product:', error);
+            toast.error('Failed to update product:');
         }
     };
 

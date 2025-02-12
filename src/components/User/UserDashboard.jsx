@@ -3,6 +3,7 @@ import { getAllProducts, getProductById } from '../../services/ProductService';
 import { Link, useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
 import { logout } from '../../services/AuthService'; // Adjust the path as needed
+import { toast } from 'react-toastify';
 const UserDashboard = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -35,6 +36,7 @@ const UserDashboard = () => {
 
     // Add product to cart and navigate to Cart page
     const addToCart = (product) => {
+        toast.success("Product added to Cart")
         let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         const existingProduct = cartItems.find((item) => item.id === product.id);
 
@@ -58,7 +60,7 @@ const UserDashboard = () => {
                     <li><Link to="/user-dashboard/categories">Categories</Link></li>
                     <li><Link to="/cart">Cart</Link></li> {/* Added Cart Link */}
                     <li>
-            <button onClick={logout} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+            <button onClick={logout} style={{ background: 'none', border: 'none', cursor: 'pointer' }} >
                 Logout
             </button>
         </li>
@@ -70,20 +72,22 @@ const UserDashboard = () => {
                 {products.map((product) => (
                     <div key={product.id} className="user-dashboard-product-box" onClick={() => handleProductClick(product.id)}>
                         <h3>{product.name}</h3>
-                        <p>Price: ${product.price}</p>
+                        <p>Price: ₹{product.price}</p>
                         <p>{product.description}</p>
-                        <button onClick={(e) => { e.stopPropagation(); addToCart(product); }}>Add to Cart</button>
+                        <button onClick={(e) => { e.stopPropagation(); 
+                            addToCart(product); }}>Add to Cart</button>
                     </div>
                 ))}
             </div>
-
+            
+            {/* Modal Pop-up */}
             {showModal && selectedProduct && (
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <button className="close-modal-btn" onClick={() => setShowModal(false)}>X</button>
                         <h2>Product Details</h2>
                         <p><strong>Name:</strong> {selectedProduct.name}</p>
-                        <p><strong>Price:</strong> ${selectedProduct.price}</p>
+                        <p><strong>Price:</strong> ₹{selectedProduct.price}</p>
                         <p><strong>Description:</strong> {selectedProduct.description}</p>
                         <p><strong>Category:</strong> {selectedProduct.categoryName || 'N/A'}</p>
                     </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Cart.css'
+import { toast } from 'react-toastify';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -20,6 +21,8 @@ const Cart = () => {
     };
 
     const removeItem = (id) => {
+     
+        toast.warn("Product Removed Successfully")
         let updatedCart = cartItems.filter((item) => item.id !== id);
         setCartItems(updatedCart);
         localStorage.setItem('cart', JSON.stringify(updatedCart));

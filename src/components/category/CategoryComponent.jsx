@@ -6,6 +6,7 @@ import {
     deleteCategory,
 } from '../../services/CategoryService';
 import './CategoryComponent.css'; // Import the CSS file
+import { toast } from 'react-toastify';
 
 const CategoryComponent = () => {
     const [categories, setCategories] = useState([]);
@@ -32,11 +33,12 @@ const CategoryComponent = () => {
     const handleAddCategory = async () => {
         try {
             await addCategory({ name: newCategoryName });
-            alert('Category added successfully');
+            toast.success('Category added successfully');
             fetchCategories(); // Refresh the category list
             setNewCategoryName(''); // Clear the input field
             setShowAddModal(false); // Close the modal
         } catch (error) {
+            toast.error('Failed to add category')
             console.error('Failed to add category:', error);
         }
     };
@@ -45,12 +47,12 @@ const CategoryComponent = () => {
     const handleUpdateCategory = async () => {
         try {
             await updateCategory(selectedCategoryId, { name: updatedCategoryName });
-            alert('Category updated successfully');
+            toast.success('Category updated successfully');
             fetchCategories(); // Refresh the category list
             setSelectedCategoryId(null); // Close the update form
             setUpdatedCategoryName(''); // Clear the input field
         } catch (error) {
-            console.error('Failed to update category:', error);
+            toast.error('Failed to update category:', error);
         }
     };
 
@@ -58,10 +60,10 @@ const CategoryComponent = () => {
     const handleDeleteCategory = async (id) => {
         try {
             await deleteCategory(id);
-            alert('Category deleted successfully');
+            toast.success('Category deleted successfully');
             fetchCategories(); // Refresh the category list
         } catch (error) {
-            console.error('Failed to delete category:', error);
+            toast.error('Failed to delete category:', error);
         }
     };
 

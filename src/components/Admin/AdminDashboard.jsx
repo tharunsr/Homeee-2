@@ -9,6 +9,7 @@ import AddProductForm from './AddProductForm'; // Import the AddProductForm comp
 import UpdateProductForm from './UpdateProductForm'; // Import the UpdateProductForm component
 import './AdminDashboard.css'; // Import the CSS file
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const AdminDashboard = ({ token }) => {
@@ -55,11 +56,11 @@ const AdminDashboard = ({ token }) => {
     const handleDeleteProduct = async (id) => {
         try {
             await deleteProduct(id, token);
-            alert('Product deleted successfully');
+            toast.success('Product deleted successfully');
             const updatedProducts = await getAllProducts();
             setProducts(updatedProducts);
         } catch (error) {
-            console.error('Failed to delete product:', error);
+            toast.error('Failed to delete product:', error);
         }
     };
 
@@ -74,7 +75,7 @@ const AdminDashboard = ({ token }) => {
                         <li>
                         <Link to="/admin-dashboard/categories">Categories</Link>
                         </li>
-                        {/* Add more links here if needed */}
+                       
                     </ul>
                 </nav>
            
@@ -112,7 +113,7 @@ const AdminDashboard = ({ token }) => {
                     {products.map((product) => (
                         <div key={product.id} className="product-card">
                             <h3>{product.name}</h3>
-                            <p>Price: ${product.price}</p>
+                            <p>Price: ₹{product.price}</p>
                             <p>{product.description}</p>
                             <button
                                 onClick={() => handleDeleteProduct(product.id)}
