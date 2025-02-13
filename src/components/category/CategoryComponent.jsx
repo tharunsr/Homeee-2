@@ -7,6 +7,10 @@ import {
 } from '../../services/CategoryService';
 import './CategoryComponent.css'; // Import the CSS file
 import { toast } from 'react-toastify';
+import logo from '../../assets/beautybasket.png'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 const CategoryComponent = () => {
     const [categories, setCategories] = useState([]);
@@ -69,7 +73,24 @@ const CategoryComponent = () => {
 
     return (
         <div className="dashboard-container">
-            <h2>Category Management</h2>
+            <nav className="dashboard-navbar">
+                <img src={logo} alt="Logo" className="dashboard-logo" />
+                    <ul>
+                        <li>
+                        <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                        <Link to="/admin-dashboard">Products</Link>
+                        </li>
+                        <li>
+                        <Link to="/">
+                        <FontAwesomeIcon icon={faPowerOff} style={{color: "#ffffff"}} />
+                        </Link>
+                        </li>
+                        
+                    </ul>
+                </nav>
+            <h1 className="dashboard-title">Category Management</h1>
 
             {/* Button to Open Add Category Modal */}
             <button className="cc-add-btn" onClick={() => setShowAddModal(true)}>

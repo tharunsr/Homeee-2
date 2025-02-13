@@ -13,7 +13,6 @@ import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/beautybasket.png'
-
 const AdminDashboard = ({ token }) => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -82,7 +81,7 @@ const AdminDashboard = ({ token }) => {
                         </li>
                         <li>
                         <Link to="/">
-                        <FontAwesomeIcon icon={faPowerOff} style={{color: "#ffffff"}} />
+                        <FontAwesomeIcon icon={faPowerOff} bounce style={{color: "#ffffff"}} />
                         </Link>
                         </li>
                        

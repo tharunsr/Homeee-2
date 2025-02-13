@@ -93,8 +93,8 @@
 
 /* Individual Category Card */
 .cc-card {
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: #191c24;
+    border: 1px solid #272828;
     border-radius: 8px;
     padding: 20px;
     width: 250px;
@@ -105,13 +105,13 @@
 
 .cc-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(151, 151, 151, 0.2);
 }
 
 .cc-category-name {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: white;
     margin-bottom: 15px;
 }
 
@@ -127,6 +127,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    font-weight : bold;
 }
 
 .cc-delete-btn {
