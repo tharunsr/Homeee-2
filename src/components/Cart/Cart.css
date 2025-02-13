@@ -1,66 +1,68 @@
-/* Cart.css */
-.cart-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
+.cart-del-button button{
+    font-family: poppins;
+    padding: 5px 15px;
+    background-color: #dc3545; /* Red for delete */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.cart-container h2 {
-    text-align: center;
-    color: #333;
+.cart-del-button button:hover {
+    filter: brightness(0.9); /* Darken the button slightly on hover */
+ }
+
+
+.cart-quantity button{
+    background-color: #25b92a;
+    color:white;
+    border: none;
+    border-radius: 5px;
+    margin : 5px;
+    cursor : pointer
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.cart-quantity button:hover {
+    filter: brightness(0.9); /* Darken the button slightly on hover */
+ }
+
+ .cart-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .cart-back a{
+    background-color: #0D6EFD;
+    color:white;
+    text-decoration: none;
+    border-radius: 5px;
+    padding : 10px 8px;
+ }
+
+ table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse : collpase;
+    backdrop-filter: blur(5px); /* adds the blur effect */
+    background: rgba(255, 255, 255, 0.2); /* adds a translucent background */
+    border-radius: 10px; /* gives the table rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* adds a subtle shadow for depth */
 }
 
 table th, table td {
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* makes the border translucent */
     padding: 10px;
     text-align: center;
+    color: white;
 }
 
 table th {
-    background: #ff4081;
+    background: rgba(175, 23, 99, 0.8); /* makes the header background glossy */
     color: white;
+    backdrop-filter: blur(2px); /* adds a slight blur to the header */
 }
 
-.cart-container button {
-    background: #ff4081;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-.cart-container button:hover {
-    background: #d8356a;
-}
-
-.cart-container .checkout-btn {
-    display: block;
-    margin: 20px auto;
-    background: green;
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
-.cart-container .checkout-btn:hover {
-    background: darkgreen;
-}
-
-.cart-container a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #ff4081;
-    text-decoration: none;
-}
-
-.cart-container a:hover {
-    text-decoration: underline;
-}

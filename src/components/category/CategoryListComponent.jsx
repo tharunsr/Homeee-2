@@ -58,7 +58,7 @@ const CategoryListComponent = () => {
                         </div>
                     ))
                 ) : (
-                    <p>No categories available.</p>
+                    <p className="dashboard-title">No categories available.</p>
                 )}
             </div>
         </div>

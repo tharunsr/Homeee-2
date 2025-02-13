@@ -1,33 +1,4 @@
 /* General Styles */
-.cc-dashboard {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    min-height: 100vh;
-}
-
-.cc-dashboard h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.cc-add-btn {
-    display: block;
-    margin: 0 auto 20px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.cc-add-btn:hover {
-    background-color: #45a049;
-}
-
 
 /* Modal Styles */
 .cc-modal-overlay {
@@ -122,6 +93,7 @@
 
 .cc-delete-btn,
 .cc-update-btn {
+    font-family: poppins;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;

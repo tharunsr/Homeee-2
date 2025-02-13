@@ -12,6 +12,7 @@ import CategoryComponent from './components/category/CategoryComponent'
 import CategoryListComponent from './components/category/CategoryListComponent'
 import Cart from './components/Cart/Cart'
 import { ToastContainer } from 'react-toastify'
+import Checkout from './components/checkout/Checkout'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/user-dashboard/categories" element={<CategoryListComponent />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />}></Route>
         </Route>
 
         <Route path="/unauthorized" element={<Unauthorized />} />

@@ -20,7 +20,10 @@ const UserDashboard = () => {
         const fetchProducts = async () => {
             try {
                 const data = await getAllProducts();
-                setProducts(data);
+                setProducts(data)
+                if (data.length === 0) {
+                    toast.error('No Products Available');
+                }
             } catch (error) {
                 toast.error('Failed to fetch products, Check Backend', error);
                 navigate('/');
