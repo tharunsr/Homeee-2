@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/beautybasket.png'
+import discountGif from '../../assets/sale.png'
 
 
 const UserDashboard = () => {
@@ -93,11 +94,15 @@ const UserDashboard = () => {
             <div className="products-container">
                 {products.map((product) => (
                     <div key={product.id} className="product-card" onClick={() => handleProductClick(product.id)}>
+                        {/* <img src={discountGif} alt="50% OFF" className="discount-badge" /> */}
+                        <img src = {`src/assets/products/${product.name.toLowerCase()}.png`} alt={`${product.name}`}/>
                         <h3>{product.name}</h3>
+                        
                         <p>Price: ₹{product.price}</p>
                         <p>{product.description}</p>
                         <button onClick={(e) => { e.stopPropagation(); 
                             addToCart(product); }}>Add to Cart</button>
+                            
                     </div>
                 ))}
             </div>

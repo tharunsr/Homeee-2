@@ -74,6 +74,7 @@
 }
 
 .products-container {
+    position: relative;
     padding : 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
@@ -222,4 +223,9 @@
 .close-modal-btn:hover {
     background-color: red;
     color:white
+}
+
+.product-card img{
+   width:70%;
+   height :auto;
 }

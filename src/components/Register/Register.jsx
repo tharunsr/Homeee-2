@@ -9,7 +9,6 @@ const Register = () => {
   const [user, setUser] = useState({ name: "", email: "", password: "", address:"",phone_num:"", role: "USER" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };

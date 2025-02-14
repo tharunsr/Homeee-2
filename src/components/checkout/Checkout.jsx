@@ -15,10 +15,10 @@ const Checkout = () => {
                 <h1 className="title">Thanks! Your Order is on your way!</h1>
                 <p className="message">Your order will be delievered within 4 to 5 working days</p>
                 <button
-                    onClick={logout}
+                    onClick={() => navigate('/user-dashboard')}
                     className="button"
                 >
-                    <FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} />
+                    Back to Products
                 </button>
             </div>
   )

@@ -13,12 +13,15 @@ import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/beautybasket.png'
+
+
 const AdminDashboard = ({ token }) => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [showAddProductModal, setShowAddProductModal] = useState(false); // State for Add Product Modal
     const [selectedProductId, setSelectedProductId] = useState(null); // State to track the product being updated
     const navigate = useNavigate();
+
     // Fetch all products and categories on component load
     useEffect(() => {
         const fetchProducts = async () => {
@@ -122,6 +125,7 @@ const AdminDashboard = ({ token }) => {
                 <div className="products-container">
                     {products.map((product) => (
                         <div key={product.id} className="product-card">
+                            
                             <h3>{product.name}</h3>
                             <p>Price: ₹{product.price}</p>
                             <p>{product.description}</p>
