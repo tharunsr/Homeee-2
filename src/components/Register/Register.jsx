@@ -24,6 +24,11 @@ const Register = () => {
     return passwordRegex.test(password);
   };
 
+  const validateName = (name) => {
+    const NameRegex = /^[\w\d]$/;
+    return NameRegex.test(name);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -34,6 +39,10 @@ const Register = () => {
 
     if (!validatePassword(user.password)) {
       setError("Password must be at least 8 characters long and include at least one number.");
+      return;
+    }
+    if (!validateName(user.name)) {
+      setError("Name must be contain only alphabets and numerics");
       return;
     }
 
