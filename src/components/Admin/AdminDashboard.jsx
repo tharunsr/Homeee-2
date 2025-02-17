@@ -1,4 +1,4 @@
-// AdminDashboard.js
+
 import React, { useEffect, useState } from 'react';
 import {
     getAllProducts,
@@ -6,13 +6,14 @@ import {
 } from '../../services/ProductService';
 import '../Dashboard/Dashboard.css'
 import { getAllCategories } from '../../services/CategoryService';
-import AddProductForm from './AddProductForm'; // Import the AddProductForm component
-import UpdateProductForm from './UpdateProductForm'; // Import the UpdateProductForm component
+import AddProductForm from './AddProductForm'; 
+import UpdateProductForm from './UpdateProductForm'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/beautybasket.png'
+import { logout } from '../../services/AuthService';
 
 
 const AdminDashboard = ({ token }) => {
@@ -83,9 +84,9 @@ const AdminDashboard = ({ token }) => {
                         <Link to="/admin-dashboard/categories">Categories</Link>
                         </li>
                         <li>
-                        <Link to="/">
+                        <button onClick={logout} style={{cursor : "pointer"}}> 
                         <FontAwesomeIcon icon={faPowerOff} bounce style={{color: "#ffffff"}} />
-                        </Link>
+                        </button>
                         </li>
                        
                     </ul>

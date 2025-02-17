@@ -1,10 +1,10 @@
-/* Container Styling */
+
 .unauthorized-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
     background: linear-gradient(-360deg, #f5f7fa, #c3cfe2); /* Modern gradient background */ /* Clean font */
 }
 
@@ -27,7 +27,6 @@
 
 /* Button Styling */
 .button {
-    
     font-family: poppins;
     padding: 0.8rem 2rem;
     font-size: 1rem;
@@ -44,8 +43,4 @@
 .button:hover {
     background-color: #2980b9; /* Darker blue on hover */
     transform: translateY(-2px); /* Slight lift effect */
-}
-
-.button:active {
-    transform: translateY(0); /* Reset position when clicked */
 }

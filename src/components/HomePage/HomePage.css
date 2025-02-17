@@ -98,12 +98,12 @@
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0px);
   }
 }
 
 .social-media-links {
-  margin: 20px 0;
+  margin: 20px 0px;
 }
 
 .social-link {

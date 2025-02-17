@@ -8,13 +8,35 @@ import { toast } from "react-toastify";
 const Register = () => {
   const [user, setUser] = useState({ name: "", email: "", password: "", address:"",phone_num:"", role: "USER" });
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateEmail(user.email)) {
+      setError("Invalid email format.");
+      return;
+    }
+
+    if (!validatePassword(user.password)) {
+      setError("Password must be at least 8 characters long and include at least one number.");
+      return;
+    }
+
     try {
       const response = await register(user);
       console.log("Registered:", response.data);
@@ -25,6 +47,10 @@ const Register = () => {
       console.error("Registration failed:", err);
       setError("Registration failed. Please try again.");
     }
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -47,17 +73,23 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            required
-          />
-          {/* <select name="role" onChange={handleChange} required>
+         <div style={{ display: "flex", alignItems: "center" , justifyContent : "space-between"}}>
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              required
+              style={{ marginRight: "10px" }}
+            />
+            <button type="button" className="toggle-password-button" onClick={toggleShowPassword}>
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
+          <select name="role" onChange={handleChange} required>
             <option value="USER">User</option>
             <option value="ADMIN">Admin</option>
-          </select> */}
+          </select>
           <input
             type="tel"
             name="phone_num"

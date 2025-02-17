@@ -1,7 +1,6 @@
 .hero {
     display: flex;
     font-weight:500;
-    flex-wrap: wrap;
     align-items: center;
     padding: 20px;
     background-color: #f4f4f4;
@@ -20,8 +19,6 @@
     margin-right: 20px;
     margin-bottom : 25px;
 }
-
-
 
 .hero-illustration {
     flex: 1;
@@ -51,7 +48,7 @@
  .arrow-right {
   color: black;
   background-color: #94d6a8;
-  padding: 10px 30px; /* Adjust padding to make the background longer */
-  border-radius: 15px; /* Apply border radius */
-  display: inline-flex; /* Use inline-flex to properly align the icon and text */
+  padding: 10px 30px; 
+  border-radius: 15px; 
+  display: inline-block;
  } 

@@ -97,7 +97,7 @@ const CategoryComponent = () => {
                 Add New Category
             </button>
 
-            {/* Add Category Modal */}
+          
             {showAddModal && (
                 <div className="cc-modal-overlay" onClick={() => setShowAddModal(false)}>
                     <div className="cc-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -144,7 +144,7 @@ const CategoryComponent = () => {
                 ))}
             </div>
 
-            {/* Update Category Form */}
+           
             {selectedCategoryId && (
                 <div className="cc-update-form-container">
                     <h3>Update Category</h3>

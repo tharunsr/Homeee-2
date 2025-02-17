@@ -45,6 +45,7 @@
   }
   
   .login-container input {
+    
     margin-bottom: 1rem;
     padding: 0.75rem;
     background: rgba(255, 255, 255, 0.2);
@@ -61,9 +62,10 @@
     border-radius: 4px;
     font-size: 1rem;
   }
-  
+
   .login-container button {
     padding: 0.75rem;
+    margin-bottom: 4%;
     border: none;
     border-radius: 4px;
     background-color: #007bff; /* Blue color */
@@ -86,4 +88,7 @@
   .login-container a:hover {
     text-decoration: underline;
   }
-  
+
+  .login-container input[name="password"] {
+    flex-grow: 1;
+  }

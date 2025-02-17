@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <header>
-        <nav className="navbar">
+        <nav className = "navbar">
         <img src={logo} alt="Logo" className="navbar-logo" />
           <ul>
           <li><Link to="/" className="link">Home</Link></li>
